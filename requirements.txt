@@ -3,3 +3,4 @@ pandas==2.2.3
 numpy==2.2.6
 scikit-learn==1.6.1
 gunicorn==23.0.0
+pyarrow==21.0.0
