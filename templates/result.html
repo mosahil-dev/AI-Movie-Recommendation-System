@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Movie Recommendations</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1> 🍿 AI Recommended Movies</h1>
+
+    <p class="subtitle">
+        Personalized recomendations based on 
+        
+        <span class="selected-movie">
+            {{ movie }}
+        </span>
+    </p>
+
+    {% if recommendations %}
+
+    <div class="movie-grid">
+
+        {% for item in recommendations %}
+
+        <div class="movie-card">
+
+            <div class="poster-box">
+
+                <img
+                src="{{ item.poster }}"
+                alt="{{ item.title }}"
+                class="poster">
+
+                <div class="rating-badge">
+                    ⭐ {{ item.rating }}
+                </div>
+
+            </div>
+
+            <h2>{{ item.title }}</h2>
+
+            <div class="genre">
+
+                🎭 {{ item.genre }}
+
+            </div>
+
+            <div class="release">
+
+                📅 {{ item.release }}
+
+            </div>
+
+            <p class="summary">
+
+                {{ item.summary }}
+
+            </p>
+
+            <div class="buttons">
+
+                {% if item.imdb %}
+                <a href="{{ item.imdb }}" target="_blank">
+                    <button type="button">
+                        ⭐ IMDb
+                    </button>
+                </a>
+                {% endif %}
+
+                {% if item.netflix %}
+                <a href="{{ item.netflix }}" target="_blank">
+                    <button type="button">
+                        🎬 Netflix
+                    </button>
+                </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="error-box">
+
+        <h2>❌ Movie Not Found</h2>
+
+        <p>Please select another movie.</p>
+
+    </div>
+
+    {% endif %}
+
+    <div class="back-home">
+
+        <a href="/">
+
+            <button>
+
+                ⬅ Back to Home
+
+            </button>
+
+        </a>
+
+    </div>
+
+</div>
+
+<div class="developer-signature">
+    <span class="dev-icon">💻</span>
+    <div>
+        <div class="dev-title">✨ Designed & Developed by</div>
+        <div class="dev-name">Mo.Sahil</div>
+    </div>
+</div>
+
+</body>
+</html>

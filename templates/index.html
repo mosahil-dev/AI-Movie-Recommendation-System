@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CineMatch AI | Movie Recommendation System</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Searchable Dropdown -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+<div class="hero">
+
+    <div class="glass-card">
+
+        <div class="logo">
+            🎬
+        </div>
+
+        <div class="ai-badge">
+            ✨ AI Powered Recommendation Engine
+        </div>
+
+        <h1 class="main-heading">
+            CineMatch <span>AI</span>
+        </h1>
+
+        <p class="subtitle">
+            Discover movies you'll actually love using Artificial Intelligence,
+            Machine Learning and smart recommendation algorithms.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h2>5000+</h2>
+                <p>Movies</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>AI</h2>
+                <p>Powered</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>IMDb</h2>
+                <p>Ratings</p>
+            </div>
+
+        </div>
+
+        <form action="/recommend" method="POST">
+
+            <div class="search-section">
+
+    <label class="search-label">
+        🎬 Choose Your Favourite Movie
+    </label>
+
+    <div class="search-box">
+
+        <div class="search-icon">
+            🔍
+        </div>
+
+        <select id="movie-select" name="movie" required>
+
+            <option value=""></option>
+
+            {% for movie in movies %}
+
+            <option value="{{ movie }}">
+                {{ movie }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <div class="search-note">
+        ✨ Search from 5000+ movies instantly
+    </div>
+
+</div>
+
+            <button type="submit" class="discover-btn">
+                <span>✨ Get AI Recommendations</span>
+                <span class="arrow">
+                    →
+                </span>
+            </button>
+
+        </form>
+
+        <div class="features">
+
+            <div class="feature-card">
+                🤖
+                <h3>AI Powered</h3>
+                <p>Smart Recommendation Engine</p>
+            </div>
+
+            <div class="feature-card">
+                🎬
+                <h3>Huge Collection</h3>
+                <p>5000+ Movies Available</p>
+            </div>
+
+            <div class="feature-card">
+                ⭐
+                <h3>Quality Data</h3>
+                <p>IMDb Ratings & Metadata</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="developer-signature">
+    <span class="dev-icon">💻</span>
+    <div class="dev-text">
+        <span class="dev-title">✨Designed & Developed by</span>
+        <span class="dev-name">Mo.Sahil</span>
+    </div>
+</div>
+
+<!-- Tom Select -->
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+<script>
+new TomSelect("#movie-select",{
+    create:false,
+    maxItems:1,
+    allowEmptyOption:true,
+    items:[],
+    placeholder:"Search any movie..."
+});
+</script>
+
+</script>
+
+</body>
+</html>
