@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ai-movie-recommendation-system
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python build_similarity.py
+    startCommand: gunicorn app:app
+    envVars:
+      - key:PYTHON_VERSION
